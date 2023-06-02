@@ -19,22 +19,23 @@ class Generator(object):
                 if i.find(password)!=-1:
                     print("correct")
                     
-                    return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\rating.html')
-                else:
-                    break
-        if b==0:
+                    return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\home.html')
+                if i.find(password)==-1:
+                    return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\incorrectpswd.html')
             return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\signup.html') 
     if b==0:
         @cherrypy.expose
         def signup(self, name, regno, email, password):
             f1=open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\userdata.csv','a')
-            f1.write(email+", "+password)
-            
-            global b
-            b=1
-            global c 
-            c=1
-            return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\index.html')
+            if email.find("vitstudent.ac.in")==-1:
+                return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\nonvit pswd.html')
+            else:
+                f1.write(email+", "+password)            
+                global b
+                b=1
+                global c 
+                c=1
+                return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\index.html')
     if c==1:
         @cherrypy.expose
         def login(self, email, password):
@@ -49,7 +50,7 @@ class Generator(object):
                         
                         return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\rating.html')
                     else:
-                        break
+                        return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\incorrectpswd.html')
     
     @cherrypy.expose
     def rating(self, rate):
