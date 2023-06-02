@@ -19,10 +19,9 @@ class Generator(object):
                 if i.find(password)!=-1:
                     print("correct")
                     
-                    return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\rating.html')
-                else:
+                    return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\home.html')
+                if i.find(password)==-1:
                     break
-        if b==0:
             return open('C:\\Users\\91702\\OneDrive\\Documents\\.vscode\\devsoc\\signup.html') 
     if b==0:
         @cherrypy.expose
